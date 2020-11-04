@@ -37,4 +37,5 @@ static const struct arg notificator[] = {
 	{ battery,	NULL },
 	{ disk,		"/"  },
 	{ disk,		"/home" },
+	{ disk,		"/tmp" },
 };
