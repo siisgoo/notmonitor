@@ -1,2 +1,2 @@
 notmon
-Events monitor and notifier
+Events monitor and notifier written in C for Linux
