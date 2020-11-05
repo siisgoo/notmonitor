@@ -35,10 +35,10 @@ main()
 	{
 		/* threads hendling vars */
 		int stat, ret = 0;
-		pid_t pid = fork();
+		/* pid_t pid = fork(); */
 
-		if (pid == 0)
-		{
+		/* if (pid == 0) */
+		/* { */
 			/* uncomplited!!! */
 			unsigned i, len;
 			for (i = len = 0; i < LEN(notificator); i++)
@@ -57,27 +57,27 @@ main()
 			}
 
 			/* check for status sended */
-			if (ret != 0)
-			       exit(EXIT_FAILURE);
-			exit(EXIT_SUCCESS);
-		}
-		else if (pid > 0)
-		{
-			/* wait for exit child process */
-			wait(&stat);
-			/* if corectly exited then continue */
-			if (WIFEXITED(stat))
-				sleep(SYNC_TIME);
-			else
-			{
-				fprintf(stderr, "Error: pid-%d exited with error code %d\n", pid, stat);
-				exit(EXIT_FAILURE);
-			}
-		}
-		else {
-			fprintf(stderr, "Fattal Error: Cant fork\n");
-			return CANT_FORK;
-		}
+			/* if (ret != 0) */
+			/*        exit(EXIT_FAILURE); */
+			/* exit(EXIT_SUCCESS); */
+		/* } */
+		/* else if (pid > 0) */
+		/* { */
+			/* /1* wait for exit child process *1/ */
+			/* wait(&stat); */
+			/* /1* if corectly exited then continue *1/ */
+			/* if (WIFEXITED(stat)) */
+			/* 	sleep(SYNC_TIME); */
+			/* else */
+			/* { */
+			/* 	fprintf(stderr, "Error: pid-%d exited with error code %d\n", pid, stat); */
+			/* 	exit(EXIT_FAILURE); */
+			/* } */
+		/* } */
+		/* else { */
+			/* fprintf(stderr, "Fattal Error: Cant fork\n"); */
+			/* return CANT_FORK; */
+		/* } */
 	}
 
 	return 0;
