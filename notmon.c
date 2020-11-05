@@ -23,80 +23,6 @@ static volatile sig_atomic_t done = 0;
 static char notify_path[MAX_PATH]; /* path to notifycator */
 
 int
-main()
-{
-	/* make more beutifull */
-	setTermHandler();
-	
-	/* get path to notifycator program */
-	snprintf(notify_path, sizeof(notify_path), "/bin/%s", NOTIFYCATOR);
-
-	while(!done)
-	{
-		/* threads hendling vars */
-		int stat, ret = 0;
-		/* pid_t pid = fork(); */
-
-		/* if (pid == 0) */
-		/* { */
-			/* uncomplited!!! */
-			unsigned i, len;
-			for (i = len = 0; i < LEN(notificator); i++)
-			{
-				int statc;
-				pid_t pidc = fork();
-				if (pidc == 0)
-				{
-					ret += notificator[i].func(notificator[i].args);
-					exit(EXIT_SUCCESS);
-				}
-				if (pidc > 0)
-					wait(&statc);
-				else
-					fprintf(stderr, "EROREWRWER\n");
-			}
-
-			/* check for status sended */
-			/* if (ret != 0) */
-			/*        exit(EXIT_FAILURE); */
-			/* exit(EXIT_SUCCESS); */
-		/* } */
-		/* else if (pid > 0) */
-		/* { */
-			/* /1* wait for exit child process *1/ */
-			/* wait(&stat); */
-			/* /1* if corectly exited then continue *1/ */
-			/* if (WIFEXITED(stat)) */
-			/* 	sleep(SYNC_TIME); */
-			/* else */
-			/* { */
-			/* 	fprintf(stderr, "Error: pid-%d exited with error code %d\n", pid, stat); */
-			/* 	exit(EXIT_FAILURE); */
-			/* } */
-		/* } */
-		/* else { */
-			/* fprintf(stderr, "Fattal Error: Cant fork\n"); */
-			/* return CANT_FORK; */
-		/* } */
-	}
-
-	return 0;
-}
-
-/* terminate command */
-static void term(){ done = 1; }
-
-static void setTermHandler()
-{
-	/* set hendler of SIGTERM and SIGINT to term() */
-	struct sigaction action;
-	memset(&action, 0, sizeof(struct sigaction));
-	action.sa_handler = term;
-	sigaction(SIGTERM, &action, NULL);
-	sigaction(SIGINT, &action, NULL);
-}
-
-int
 sendNotify(char **argv, char *msg, int level)
 {
 	switch(level)
@@ -157,3 +83,84 @@ disk(char *fs)
 
 	return ret;
 }
+
+int
+main()
+{
+	/* set hendler of SIGTERM and SIGINT to term() */
+	struct sigaction action;
+	memset(&action, 0, sizeof(struct sigaction));
+	action.sa_handler = term;
+	sigaction(SIGTERM, &action, NULL);
+	sigaction(SIGINT, &action, NULL);
+
+	/* get path to notifycator program */
+	snprintf(notify_path, sizeof(notify_path), "/bin/%s", NOTIFYCATOR);
+
+	while(!done)
+	{
+		/* threads hendling vars */
+		int stat, ret = 0;
+		pid_t pid = fork();
+
+		if (pid == 0)
+		{
+			/* uncomplited!!! */
+			unsigned i, len;
+			for (i = len = 0; i < LEN(notificator); i++)
+			{
+				int statc;
+				pid_t pidc = fork();
+				if (pidc == 0)
+				{
+					ret += notificator[i].func(notificator[i].args);
+
+					if (ret == 0)
+						exit(EXIT_SUCCESS);
+					else
+						exit(EXIT_FAILURE);
+				}
+				if (pidc > 0)
+				{
+					wait(&statc);
+
+					if (!WIFEXITED(statc))
+					{
+						fprintf(stderr, "Error: pid-%d exited with error code %d\n", pid, statc);
+						exit(EXIT_FAILURE);
+					}
+				}
+				else
+					fprintf(stderr, "EROREWRWER\n");
+			}
+
+			/* check for status sended */
+			if (ret != 0)
+			       exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
+		}
+		else if (pid > 0)
+		{
+			/* wait for exit child process */
+			wait(&stat);
+			/* if corectly exited then continue */
+			if (WIFEXITED(stat))
+				sleep(SYNC_TIME);
+			else
+			{
+				fprintf(stderr, "Error: pid-%d exited with error code %d\n", pid, stat);
+				exit(EXIT_FAILURE);
+			}
+		}
+		else {
+			fprintf(stderr, "Fattal Error: Cant fork\n");
+			return CANT_FORK;
+		}
+	}
+
+	return 0;
+}
+
+/* terminate command */
+void term(){ done = 1; }
+

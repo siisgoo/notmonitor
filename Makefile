@@ -7,6 +7,8 @@ EXECUTABLE=$(shell basename `pwd`)
 
 all: options $(SOURCES) $(EXECUTABLE)
 
+remake: clean all
+
 options:
 	@echo build options:
 	@echo "CFLAGS	= $(CFLAGS)"

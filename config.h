@@ -6,8 +6,8 @@
 
 #define MAX_ARG   9 /* args amount+1 */
 #define ARG_MSG   (MAX_ARG-2)
-#define ARG_LEVEL 4
-#define ARG_APP   2
+#define ARG_LEVEL (ARG_MSG-3)
+#define ARG_APP   (ARG_LEVEL-2)
 
 /* low and critical values for warning */
 #define B_LOW  25
@@ -27,7 +27,7 @@
 #define M_CRIT "Critical battery charge"
 
 /* sync time */
-#define SYNC_TIME 60
+#define SYNC_TIME 5
 
 /* notifycator arguments */
 char *gArgv[MAX_ARG] = { NOTIFYCATOR,
