@@ -10,10 +10,6 @@
 #define L_NORMAL   1
 #define L_CRITICAL 2
 
-/* messeges per level */
-#define M_LOW "Low battery charge"
-#define M_CRIT "Critical battery charge"
-
 static void term();
 static void setTermHandler();
 int battery();

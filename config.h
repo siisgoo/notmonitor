@@ -4,7 +4,7 @@
 #define APP "notmon"		  /* app that will be displaied in notification msg */
 /* #define TIMEOUT (10 * 1000)       /1* expire time of msg *1/ */
 
-#define MAX_ARG   9 /* args_amount+1 */
+#define MAX_ARG   9 /* args amount+1 */
 #define ARG_MSG   (MAX_ARG-2)
 #define ARG_LEVEL 4
 #define ARG_APP   2
@@ -20,6 +20,11 @@
 
 #define DISK_MSG_LOW  "Running out of disk space "
 #define DISK_MSG_CRIT DISK_MSG_LOW
+
+/* battery */
+/* messeges per level */
+#define M_LOW "Low battery charge"
+#define M_CRIT "Critical battery charge"
 
 /* sync time */
 #define SYNC_TIME 60
