@@ -1,7 +1,29 @@
 CC=gcc
-CFLAGS=-c -Wall -xc
 
-SOURCES=notmon.c battery.c disk.c util.c
+GLIBINC=\
+	-I/usr/include/glib-2.0\
+	-I/usr/lib/glib-2.0/include
+
+NOTIFINC=\
+	-I/usr/include/gdk-pixbuf-2.0\
+	-I/usr/include/glib-2.0\
+	-I/usr/lib/glib-2.0/include\
+	-I/usr/include/libmount\
+	-I/usr/include/blkid\
+	-pthread
+
+INC=$(GLIBINC) $(NOTIFINC)
+LDFLAGS=
+LDLIBS=\
+	-lglib-2.0\
+	-lnotify\
+	-lgdk_pixbuf-2.0\
+	-lgio-2.0\
+	-lgobject-2.0
+
+CFLAGS= -c -Wall -xc $(INC)
+
+SOURCES=notmon.c util.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=$(shell basename `pwd`)
 
@@ -16,7 +38,7 @@ options:
 	@echo "CC	= $(CC)"
 		
 $(EXECUTABLE): $(OBJECTS) 
-		$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+		$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(LDLIBS)
 
 .c.o:
 		$(CC) $(CFLAGS) $< -o $@
