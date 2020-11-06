@@ -4,7 +4,6 @@
 #define LEN(x) (sizeof (x) / sizeof *(x))
 
 #define MAX_PATH 64
-#define IDENT_BAT "BAT0"
 
 const char *fmt_human(long int n);
 

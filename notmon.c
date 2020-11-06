@@ -2,10 +2,10 @@
 /* about low battery charge using notifycation daemon */
 /* made with love */
 #include <stdio.h>
-#include <libnotify/notify.h>
 #include <unistd.h>
 #include <signal.h>
 #include <string.h>
+#include <libnotify/notify.h>
 
 struct arg {
 	int (*func)();
@@ -24,13 +24,13 @@ battery()
 	int perc;
 	int ret = 0;
 
-	if (isChurging(IDENT_BAT) == 0)
+	if (isChurging(bat) == 0)
 	{
-		perc = getBatPerc(IDENT_BAT);
+		perc = getBatPerc(bat);
 		if (perc < B_LOW) {
-			ret = sendNotify("battery", M_LOW, 10000, "monitor", NOTIFY_URGENCY_NORMAL);
+			ret = sendNotify("battery", BATTERY_MSG_LOW, 10000, "monitor", NOTIFY_URGENCY_NORMAL);
 		} else if(perc < B_CRIT) {
-			ret = sendNotify("battery", M_CRIT, 10000, "monitor", NOTIFY_URGENCY_CRITICAL);
+			ret = sendNotify("battery", BATTERY_MSG_CRIT, 10000, "monitor", NOTIFY_URGENCY_CRITICAL);
 		}
 	}
 

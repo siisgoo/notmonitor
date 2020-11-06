@@ -1,7 +1,6 @@
 #define APP "notmon" /* app that will be displaied in notification msg */
 #define HELLO_MSG "You'r welcome to " APP
 
-
 /* disk */
 /* disk free space in perc to alarm */
 #define D_LOW  100
@@ -16,11 +15,13 @@
 #define B_CRIT 15
 
 /* messeges per level */
-#define M_LOW "Low battery charge"
-#define M_CRIT "Critical battery charge"
+#define BATTERY_MSG_LOW "Low battery charge"
+#define BATTERY_MSG_CRIT "Critical battery charge"
 
 /* sync time */
 #define SYNC_TIME 5
+
+extern const char *bat = "BAT0";
 
 static const struct arg notificator[] = {
 	/* monitor	argument */
