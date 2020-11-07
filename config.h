@@ -3,25 +3,25 @@
 
 /* disk */
 /* disk free space in perc to alarm */
-#define D_LOW  100
-#define D_CRIT 1
+static const signed int diskLowValue = 100;
+static const signed int diskCritValue = 1;
 
 #define DISK_MSG_LOW  "Running out of disk space "
 #define DISK_MSG_CRIT DISK_MSG_LOW
 
 /* battery */
 /* battery low and critical values for warning */
-#define B_LOW  100
-#define B_CRIT 15
+static const signed int batteryLowValue = 100;
+static const signed int batteryCritValue = 1;
 
 /* messeges per level */
 #define BATTERY_MSG_LOW "Low battery charge"
 #define BATTERY_MSG_CRIT "Critical battery charge"
 
 /* sync time */
-#define SYNC_TIME 5
+static const unsigned int syncTime = 5;
 
-extern const char *bat = "BAT0";
+static const char *bat = "BAT0";
 
 static const struct arg notificator[] = {
 	/* monitor	argument */
