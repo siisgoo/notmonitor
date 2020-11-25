@@ -26,7 +26,6 @@ static const unsigned int interval = 60000;
  * battery			battery name
  * disk				mount poing path
  */
-
 static const struct arg notificator[] = {
    /* function	argument */
 	{ battery,	"BAT0" },
