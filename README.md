@@ -3,7 +3,7 @@ System monitor and notifier.
 
 ## Content
 1. [ Configuration. ](#conf)
-	1. [ Syntax. ](#syntax)
+	+ [ Syntax. ](#syntax)
 2. [ Availible monitors. ](#mons)
 3. [ In development capabilities. ](#dev)
 
