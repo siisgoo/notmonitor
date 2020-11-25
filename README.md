@@ -1,7 +1,7 @@
 # NOTMON
 System monitor and notifier.
 
-## Content
+## Table of content
 1. [ Configuration. ](#conf)
 	+ [ Syntax. ](#syntax)
 2. [ Availible monitors. ](#mons)
