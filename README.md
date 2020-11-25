@@ -2,10 +2,10 @@
 System monitor and notifier.
 
 ## Content
-1. [ Configuration. ] (#conf)
-1. [ Syntax. ] (#syntax)
-3. [ Availible monitors. ] (#mons)
-4. [ In development capabilities. ] (#dev)
+1. [ Configuration. ](#conf)
+ 1. [ Syntax. ](#syntax)
+2. [ Availible monitors. ](#mons)
+3. [ In development capabilities. ](#dev)
 
 <a name="conf"></a>
 ## Configuration
