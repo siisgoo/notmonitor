@@ -109,7 +109,7 @@ diskFree(const char *path)
 }
 
 static int
-battery()
+battery(const char* bat)
 {
 	int perc;
 	int ret = 0;

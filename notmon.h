@@ -16,5 +16,5 @@ static void term();
 static int sendNotify(const char *appName, const char *msg, gint timeout, const char *category, NotifyUrgency urgency);
 
 /* monitors */
-static int battery();
+static int battery(const char *bat);
 static int disk(char *fs);

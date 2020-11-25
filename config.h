@@ -3,7 +3,7 @@
 
 /* disk */
 /* disk free space in perc to alarm */
-static const signed int diskLowValue = 100;
+static const signed int diskLowValue  = 5;
 static const signed int diskCritValue = 1;
 
 #define DISK_MSG_LOW  "Running out of disk space "
@@ -11,21 +11,25 @@ static const signed int diskCritValue = 1;
 
 /* battery */
 /* battery low and critical values for warning */
-static const signed int batteryLowValue = 100;
-static const signed int batteryCritValue = 1;
+static const signed int batteryLowValue  = 25;
+static const signed int batteryCritValue = 16;
 
 /* messeges per level */
 #define BATTERY_MSG_LOW "Low battery charge"
 #define BATTERY_MSG_CRIT "Critical battery charge"
 
-/* sync time */
-static const unsigned int interval = 10000;
+/* sync time in ms */
+static const unsigned int interval = 60000;
 
-static const char *bat = "BAT0";
+/*
+ * func				argument
+ * battery			battery name
+ * disk				mount poing path
+ */
 
 static const struct arg notificator[] = {
-	/* monitor	argument */
-	{ battery,	NULL },
+   /* function	argument */
+	{ battery,	"BAT0" },
 	{ disk,		"/"  },
 	{ disk,		"/home" },
 	{ disk,		"/tmp" },
