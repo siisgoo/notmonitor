@@ -19,7 +19,7 @@ static const signed int batteryCritValue = 1;
 #define BATTERY_MSG_CRIT "Critical battery charge"
 
 /* sync time */
-static const unsigned int syncTime = 5;
+static const unsigned int interval = 10000;
 
 static const char *bat = "BAT0";
 

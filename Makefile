@@ -23,7 +23,7 @@ LDLIBS=\
 
 CFLAGS= -c -Wall -xc $(INC)
 
-SOURCES=notmon.c util.c
+SOURCES=notmon.c utils.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=$(shell basename `pwd`)
 
