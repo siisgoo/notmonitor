@@ -11,12 +11,12 @@ static const signed int diskCritValue = 1;
 
 /* battery */
 /* battery low and critical values for warning */
-static const signed int batteryLowValue  = 25;
-static const signed int batteryCritValue = 16;
+static const signed int batteryLowValue  = 30;
+static const signed int batteryCritValue = 20;
 
 /* messeges per level */
-#define BATTERY_MSG_LOW "Low battery charge"
-#define BATTERY_MSG_CRIT "Critical battery charge"
+#define BATTERY_MSG_LOW "Low battery charge "
+#define BATTERY_MSG_CRIT "Critical battery charge "
 
 /* sync time in ms */
 static const unsigned int interval = 60000;
@@ -29,7 +29,7 @@ static const unsigned int interval = 60000;
 static const struct arg notificator[] = {
    /* function	argument */
 	{ battery,	"BAT0" },
-	{ disk,		"/"  },
+	{ disk,		"/" },
 	{ disk,		"/home" },
 	{ disk,		"/tmp" },
 };

@@ -1,6 +1,8 @@
 #ifndef  _UTIL_H_
 #define _UTIL_H_
 
+#include <stdint.h>
+
 #define LEN(x) (sizeof (x) / sizeof *(x))
 
 #define MAX_PATH 64

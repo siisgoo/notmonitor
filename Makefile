@@ -21,7 +21,7 @@ LDLIBS=\
 	-lgio-2.0\
 	-lgobject-2.0
 
-CFLAGS= -c -Wall -xc $(INC)
+CFLAGS= -c -Wall -xc -O2 $(INC)
 
 SOURCES=notmon.c utils.c
 OBJECTS=$(SOURCES:.c=.o)

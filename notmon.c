@@ -1,6 +1,3 @@
-/* this program exist for alarm user */
-/* about low battery charge using notifycation daemon */
-/* made with love */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -183,10 +180,11 @@ main(void)
 			if (clock_gettime(CLOCK_MONOTONIC, &start) < 0) {
 				die("clock_gettime:");
 			}
+			printf("loop\n");
 
-			unsigned i, len;
+			int i;
 			/* run monitors */
-			for (i = len = 0; i < LEN(notificator); i++)
+			for (i = 0; i < LEN(notificator); i++)
 			{
 				notificator[i].func(notificator[i].args);
 			}
@@ -212,5 +210,5 @@ main(void)
 			}
 	}
 
-
+	return 0;
 }

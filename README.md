@@ -36,3 +36,6 @@ static const struct arg notifications[] = {
 	- [ ] MPD notifications
 - [ ] Functions
 	- [ ] Ignoring some notifications on the fly
+
+## TODO
+- Unify error hendling
