@@ -1,8 +1,17 @@
 #define MAX_LINE 1000
 
-#define LEN(x) (sizeof (x) / sizeof *(x))
+/* messeges per level */
+static const char *batteryMsgLow  = "Low battery charge";
+static const char *batteryMsgCrit = "Critical battery charge";
 
-#define MAX_PATH 64
+static const char *diskMsgLow  = "Disk space remaining";
+static const char *diskMsgCrit = "Disk space remaining";
+/**********************/
+
+/* time */
+static struct timespec now();
+static void difftimespec(struct timespec *res, struct timespec *a, struct timespec *b);
+static struct timespec timer_get_wait(struct timespec start, long interval);
 
 /* battery handling */
 int getBatPerc(const char *bat);
@@ -18,3 +27,4 @@ static int sendNotify(const char *appName, const char *msg, gint timeout, const 
 /* monitors */
 static int battery(const char *bat);
 static int disk(char *fs);
+static int checkupdates(void);

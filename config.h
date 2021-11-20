@@ -3,33 +3,31 @@
 
 /* disk */
 /* disk free space in perc to alarm */
-static const signed int diskLowValue  = 5;
-static const signed int diskCritValue = 1;
-
-#define DISK_MSG_LOW  "Running out of disk space "
-#define DISK_MSG_CRIT DISK_MSG_LOW
+static const int diskLowValue  = 95;
+static const int diskCritValue = 99;
 
 /* battery */
 /* battery low and critical values for warning */
-static const signed int batteryLowValue  = 30;
-static const signed int batteryCritValue = 20;
+static const int batteryLowValue  = 30;
+static const int batteryCritValue = 20;
 
-/* messeges per level */
-#define BATTERY_MSG_LOW "Low battery charge "
-#define BATTERY_MSG_CRIT "Critical battery charge "
+/* checkupdates */
+/* number of packages with available update to notify */
+static const int checkupdatesVarnPkgs = 40;
 
 /* sync time in ms */
-static const unsigned int interval = 60000;
+static const unsigned int g_interval = 60000;
 
-/*
- * func				argument
- * battery			battery name
- * disk				mount poing path
- */
+/***********************************
+ * func				     argument
+ * battery			     battery name
+ * disk				     mount poing path
+ * checkupdates          NULL
+ * checkupdates_aur      NULL
+ ***********************************/
 static const struct arg notificator[] = {
-   /* function	argument */
-	{ battery,	"BAT0" },
-	{ disk,		"/" },
-	{ disk,		"/home" },
-	{ disk,		"/tmp" },
+   /* function | update frequency(ms) |  argument */
+    { battery,	                   0,   "BAT0" },
+    { disk,		                   0,    "/" },
+    { checkupdates,           360000,    NULL },
 };

@@ -10,8 +10,6 @@
 
 #include "utils.h"
 
-char buf[1024];
-
 const char *
 fmt_human(long int num)
 {

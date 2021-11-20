@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+extern char buf[1024];
+
 #define LEN(x) (sizeof (x) / sizeof *(x))
 
 #define MAX_PATH 64
